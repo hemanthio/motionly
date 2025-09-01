@@ -1,45 +1,24 @@
 export const metadata = {
-  title: 'Accordion - Motion-Primitives',
+  title: 'Accordion - Motionly',
   description:
-    'A vertically stacked set of collapsible containers allowing users to toggle content visibility. Customize the animation effects with variants and transitions for expanding/collapsing the sections. Built for React, Next.js, and Tailwind CSS.',
+    'An animated accordion component with smooth transitions and customizable FAQ items. Built for React, Next.js, and Tailwind CSS.',
 };
 
-import { AccordionBasic } from './accordion-basic';
-import { AccordionIcons } from './accordion-icons';
-import { AccordionVariant } from './accordion-variant';
+import FAQAccordion from './Accordion';
 import ComponentCodePreview from '@/components/website/component-code-preview';
 
 # Accordion
 
-A vertically stacked set of collapsible containers allowing users to toggle content visibility. Customize the animation effects with variants and transitions for expanding/collapsing the sections.
+An animated accordion component with smooth transitions and customizable FAQ items. Features expandable content panels with hover effects and fade-in animations.
 
 ## Examples
 
-### Accordion Basic
+### Basic Accordion
 
 <ComponentCodePreview
-  classNameComponentContainer='min-h-0 py-24 lg:px-32 px-8'
-  component={<AccordionBasic />}
-  filePath='app/docs/accordion/accordion-basic.tsx'
-/>
-
-### Accordion with icons
-
-You can control transformations on elements inside `AccordionTrigger` using `group-data-[expanded]:....`.
-Here, we apply `-rotate-180` to rotate the icon 180 degrees when its associated section is expanded.
-
-<ComponentCodePreview
-  classNameComponentContainer='min-h-0 py-24 lg:px-32 px-8'
-  component={<AccordionIcons />}
-  filePath='app/docs/accordion/accordion-icons.tsx'
-/>
-
-### Accordion custom variants
-
-<ComponentCodePreview
-  classNameComponentContainer='min-h-0 py-24 lg:px-32 px-8'
-  component={<AccordionVariant />}
-  filePath='app/docs/accordion/accordion-variant.tsx'
+  component={<FAQAccordion />}
+  filePath='app/docs/accordion/Accordion.tsx'
+  classNameComponentContainer='min-h-[400px] flex items-center justify-center'
 />
 
 ## Installation
@@ -63,9 +42,11 @@ Here, we apply `-rotate-180` to rotate the icon 180 degrees when its associated 
 
 <Step>Copy and paste the following code into your project.</Step>
 
-<CodeBlock filePath='components/core/accordion.tsx' />
+<CodeBlock filePath='app/docs/accordion/Accordion.tsx' />
 
 <Step>Update the import paths to match your project setup.</Step>
+
+<Step>Customize the FAQ items array with your own questions and answers.</Step>
 
 </Steps>
 
@@ -75,35 +56,34 @@ Here, we apply `-rotate-180` to rotate the icon 180 degrees when its associated 
 
 ## Component API
 
-### Accordion
+### FAQAccordion
 
-| Prop          | Type                                        | Default | Description                                             |
-| :------------ | :------------------------------------------ | :------ | :------------------------------------------------------ |
-| children      | ReactNode                                   |         | The content elements of the accordion.                  |
-| className     | string                                      |         | Optional CSS class for styling the accordion container. |
-| transition    | Transition                                  |         | Transition settings from motion for animation effects.  |
-| variants      | `{ expanded: Variant; collapsed: Variant }` |         | Custom variants for expanded and collapsed states.      |
-| expandedValue | React.Key \| null                           |         | Controlled expanded value.                              |
-| onValueChange | (value: React.Key \| null) => void          |         | Callback function when the expanded value changes.      |
+| Prop      | Type           | Default              | Description                                  |
+| :-------- | :------------- | :------------------- | :------------------------------------------- |
+| faqItems  | Array FAQItem | Predefined FAQ items | Array of FAQ items with question and answer. |
+| className | string         | ''                   | Optional CSS class for additional styling.   |
 
-### AccordionItem
+### FAQ Item Interface
 
-| Prop      | Type      | Default | Description                                                  |
-| :-------- | :-------- | :------ | :----------------------------------------------------------- |
-| value     | React.Key |         | Unique identifier for controlling the accordion item state.  |
-| children  | ReactNode |         | The content elements of the accordion item.                  |
-| className | string    |         | Optional CSS class for styling the accordion item container. |
+| Property | Type   | Description                   |
+| :------- | :----- | :---------------------------- |
+| question | string | The question text to display. |
+| answer   | string | The answer text to display.   |
 
-### AccordionTrigger
+## Customization
 
-| Prop      | Type      | Default | Description                                                   |
-| :-------- | :-------- | :------ | :------------------------------------------------------------ |
-| children  | ReactNode |         | Content of the trigger, typically a string or formatted text. |
-| className | string    |         | Optional CSS class for styling the trigger element.           |
+The accordion component can be easily customized by:
 
-### AccordionContent
+1. **Modifying FAQ Items**: Update the `faqItems` array with your own questions and answers
+2. **Styling**: Customize colors, spacing, and animations through Tailwind classes
+3. **Animation**: Adjust the fade-in animation duration and easing in the CSS
+4. **Icons**: Replace ChevronUp/ChevronDown with your preferred icons
 
-| Prop      | Type      | Default | Description                                                |
-| :-------- | :-------- | :------ | :--------------------------------------------------------- |
-| children  | ReactNode |         | The content displayed when the accordion item is expanded. |
-| className | string    |         | Optional CSS class for styling the content container.      |
+## Features
+
+- ✅ Smooth expand/collapse animations
+- ✅ Hover effects on accordion items
+- ✅ Customizable FAQ content
+- ✅ Responsive design
+- ✅ Accessible keyboard navigation
+- ✅ Fade-in animation for content panels

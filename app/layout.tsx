@@ -34,7 +34,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${geistMono.variable} bg-white font-sans antialiased dark:bg-zinc-950`}
       >
-        <ThemeProvider attribute='class'>
+        <ThemeProvider attribute='class' defaultTheme='light'>
           <TooltipProvider>
             <div className='isolate min-h-screen'>{children}</div>
           </TooltipProvider>

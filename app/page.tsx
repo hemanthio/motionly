@@ -1,48 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
-import { MorphingDialogBasicOne } from '@/app/docs/morphing-dialog/morphing-dialog-basic-1';
 import XIcon from '@/components/website/icons/x';
 import GitHubIcon from '@/components/website/icons/github';
 import ThemeSwitch from '@/components/website/theme-switch';
-import { MorphingPopoverTextarea } from '@/app/docs/morphing-popover/morphing-popover-textarea';
 import { ChevronRight } from 'lucide-react';
-import { CardExampleLanding } from '@/components/website/card-example-landing';
-import { AnimatedGroupPreset } from '@/app/docs/animated-group/animated-group-preset';
-import { InViewImagesGrid } from '@/app/docs/in-view/in-view-images-grid';
-import { InfiniteSliderHoverSpeed } from '@/app/docs/infinite-slider/infinite-slider-hover-speed';
-import { Cursor1 } from '@/app/docs/cursor/cursor-1';
-import { SegmentedControl } from '@/app/docs/animated-background/segmented-control';
 import { MPLogo } from '@/components/website/icons/motion-primitives-logo';
 import LaunchBanner from '@/components/website/launch-banner';
-import { TextLoopBasic } from './docs/text-loop/text-loop-basic';
-import { TextShimmerBasic } from './docs/text-shimmer/text-shimmer-basic';
-import { BorderTrailCard1 } from './docs/border-trail/border-trail-card-1';
-import { TextEffectSpeed } from './docs/text-effect/text-effect-speed';
-import { TextScrambleBasic } from './docs/text-scramble/text-scramble-basic';
-import { ProBadge } from '@/components/website/header';
 
-function Button({
-  children,
-  variant = 'primary',
-}: {
-  children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
-}) {
-  const buttonVariants = {
-    primary:
-      'bg-zinc-50 border border-zinc-100 text-zinc-950 hover:bg-zinc-100 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:text-zinc-50 dark:border-zinc-900',
-    secondary:
-      'bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:hover:bg-zinc-300 dark:text-zinc-950',
-  };
-
-  return (
-    <button
-      className={`inline-flex items-center rounded-md px-2.5 py-1.5 text-sm ${buttonVariants[variant]}`}
-    >
-      {children}
-    </button>
-  );
-}
 
 function Header() {
   return (
@@ -60,25 +24,8 @@ function Header() {
 
         <div className='flex items-center space-x-6'>
           <nav className='hidden items-center space-x-6 sm:flex'>
-            <a
-              href='https://pro.motion-primitives.com/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hidden items-center text-sm font-medium text-zinc-700 hover:text-zinc-950 md:inline-flex dark:text-zinc-300 dark:hover:text-white'
-            >
-              Advanced
-              <ProBadge />
-            </a>
-            <a
-              href='https://pro.motion-primitives.com/templates'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='inline-flex items-center text-sm font-medium text-zinc-700 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white'
-            >
-              Templates
-            </a>
             <Link
-              href='/docs/text-effect'
+              href='/docs/button'
               className='text-sm font-medium text-zinc-700 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white'
             >
               Components
@@ -122,98 +69,49 @@ export default function Motion() {
               UI kit to make beautiful, animated interfaces, faster.
             </h1>
             <p className='text-center text-zinc-600 dark:text-zinc-200'>
-              Beautifully designed motions components. Easy copy-paste.
+              Beautifully designed motion components. Easy copy-paste.
               Customizable. Open Source. Built for engineers and designers.
             </p>
           </div>
           <div className='flex items-center space-x-4 py-6'>
             <Link href='/docs'>
-              <Button>
+              <button className='inline-flex items-center rounded-md border border-zinc-100 bg-zinc-50 px-2.5 py-1.5 text-sm text-zinc-950 hover:bg-zinc-100 dark:border-zinc-900 dark:bg-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-600'>
                 Explore Docs
                 <ChevronRight className='ml-1.5 h-4 w-4' />
-              </Button>
+              </button>
             </Link>
             <a
               href='https://github.com/ibelick/motion-primitives'
               target='_blank'
               rel='noopener noreferrer'
             >
-              <Button variant='secondary'>
+              <button className='inline-flex items-center rounded-md bg-zinc-900 px-2.5 py-1.5 text-sm text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-zinc-300'>
                 <GitHubIcon className='mr-1.5 h-4 w-4 fill-white dark:fill-zinc-950' />
                 Star on GitHub
-              </Button>
+              </button>
             </a>
           </div>
           <span className='mt-2 text-center text-sm text-zinc-500 dark:text-zinc-400'>
             Free updates and new components released regularly.
           </span>
         </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding>
-            <MorphingDialogBasicOne />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding hasReTrigger>
-            <AnimatedGroupPreset />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding
-            className='px-8 md:px-20 [&>div]:h-52 [&>div]:justify-start'
-            hasReTrigger
-          >
-            <TextEffectSpeed />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding hasReTrigger>
-            <InViewImagesGrid />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding className='px-0'>
-            <InfiniteSliderHoverSpeed />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding>
-            <Cursor1 />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding className='px-8 md:px-20 [&>div]:h-52 [&>div]:justify-start'>
-            <TextLoopBasic />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding className='px-8 md:px-20 [&>div]:h-52 [&>div]:justify-start'>
-            <TextShimmerBasic />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding
-            className='px-8 md:px-20 [&>div]:h-52 [&>div]:justify-start'
-            hasReTrigger
-          >
-            <TextScrambleBasic />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding>
-            <MorphingPopoverTextarea />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding>
-            <BorderTrailCard1 />
-          </CardExampleLanding>
-        </section>
-        <section className='mx-auto max-w-3xl py-32'>
-          <CardExampleLanding>
-            <SegmentedControl />
-          </CardExampleLanding>
-        </section>
+
+        {/* <section className='mx-auto max-w-3xl py-32'>
+          <div className='flex flex-col items-center justify-center space-y-8'>
+            <h2 className='text-2xl font-semibold text-zinc-950 dark:text-zinc-50'>
+              Button Component Demo
+            </h2>
+            <div className='flex flex-col items-center space-y-4'>
+              <Button text='Solid Button' variant='solid' />
+              <Button text='Border Button' variant='border' />
+            </div>
+            <p className='max-w-md text-center text-zinc-600 dark:text-zinc-200'>
+              Experience our animated button component with smooth hover effects
+              and text animations.
+            </p>
+          </div>
+        </section> */}
+
         <div className='text-center text-sm text-zinc-500 dark:text-zinc-400'>
           <Link href='/docs'>and more...</Link>
         </div>
