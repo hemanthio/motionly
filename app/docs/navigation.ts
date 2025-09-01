@@ -126,6 +126,11 @@ export const NAVIGATION: NavigationGroup[] = [
     name: 'Interactive Elements',
     children: [
       {
+        name: 'Button',
+        href: '/docs/button',
+        isNew: true,
+      },
+      {
         name: 'Dock',
         href: '/docs/dock',
       },

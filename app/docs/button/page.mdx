@@ -1,0 +1,74 @@
+export const metadata = {
+  title: 'Button - Motion-Primitives',
+  description:
+    'An animated button component with hover effects and smooth transitions. Built for React, Next.js, and Tailwind CSS.',
+};
+
+import Button from './Button';
+import ComponentCodePreview from '@/components/website/component-code-preview';
+
+# Button
+
+An animated button component with hover effects and smooth transitions. Features text animation on hover with customizable variants.
+
+## Examples
+
+### Basic Button
+
+<ComponentCodePreview
+  component={<Button />}
+  filePath='app/docs/button/Button.tsx'
+  classNameComponentContainer='min-h-[200px] flex items-center justify-center'
+/>
+
+### Border Variant
+
+<ComponentCodePreview
+  component={<Button variant='border' text='Get Started' />}
+  filePath='app/docs/button/Button.tsx'
+  classNameComponentContainer='min-h-[200px] flex items-center justify-center'
+/>
+
+
+
+## Installation
+
+<Tabs defaultValue="cli">
+
+<TabsList>
+  <TabsTrigger value='cli'>CLI</TabsTrigger>
+  <TabsTrigger value='manual'>Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+<InstallationCli value='button' />
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<CodeBlock filePath='app/docs/button/Button.tsx' />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</Tabs>
+
+## Component API
+
+### Button
+
+| Prop      | Type                | Default               | Description                                |
+| :-------- | :------------------ | :-------------------- | :----------------------------------------- |
+| text      | string              | 'Book discovery call' | The text content of the button.            |
+| href      | string              | '#'                   | The URL the button links to.               |
+| className | string              | ''                    | Optional CSS class for additional styling. |
+| variant   | 'solid' \| 'border' | 'solid'               | The visual variant of the button.          |
