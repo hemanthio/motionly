@@ -52,18 +52,20 @@ const FAQAccordion = () => {
               onClick={() => toggleItem(index)}
               className={`w-full px-6 py-4 text-left flex justify-between items-center rounded-lg transition-all duration-300 ${
                 activeItem === index
-                  ? "bg-white border-2 border-purple-300"
-                  : "bg-white border-2 border-gray-200 hover:border-gray-300"
+                  ? "bg-gray-50 border-2 border-purple-400"
+                  : "bg-gray-50 border-2 border-gray-100 hover:border-gray-300"
               }`}
             >
               <span className="text-gray-800 font-medium pr-8">
                 {item.question}
               </span>
-              {activeItem === index ? (
-                <ChevronUp className="w-5 h-5 text-gray-500" />
-              ) : (
-                <ChevronDown className="w-5 h-5 text-gray-500" />
-              )}
+              <span
+  className={`transform transition-transform duration-300 ease-in-out ${
+    activeItem === index ? "rotate-180" : "rotate-0"
+  }`}
+>
+  <ChevronDown className="w-5 h-5 text-gray-500" />
+</span>
             </button>
 
             <div
@@ -71,7 +73,7 @@ const FAQAccordion = () => {
                 activeItem === index ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="bg-white rounded-lg border border-gray-200 px-6 py-5">
+              <div className="bg-gray-50 rounded-lg border border-gray-200 px-6 py-5">
                 <p className="text-gray-600 leading-relaxed">{item.answer}</p>
               </div>
             </div>
