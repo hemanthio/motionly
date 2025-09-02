@@ -50,7 +50,7 @@ const FAQAccordion = () => {
           <div key={index} className="mb-2">
             <button
               onClick={() => toggleItem(index)}
-              className={`w-full px-6 py-4 text-left flex justify-between items-center rounded-lg transition-all duration-300 ${
+              className={`w-full px-6 py-4 text-left flex justify-between items-center rounded-xl transition-all duration-300 ${
                 activeItem === index
                   ? "bg-gray-50 border-2 border-purple-400"
                   : "bg-gray-50 border-2 border-gray-100 hover:border-gray-300"
@@ -73,7 +73,7 @@ const FAQAccordion = () => {
                 activeItem === index ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="bg-gray-50 rounded-lg border border-gray-200 px-6 py-5">
+              <div className="bg-gray-50 rounded-xl border border-gray-200 px-6 py-5">
                 <p className="text-gray-600 leading-relaxed">{item.answer}</p>
               </div>
             </div>

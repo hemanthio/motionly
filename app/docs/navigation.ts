@@ -28,15 +28,16 @@ export const NAVIGATION: NavigationGroup[] = [
     name: 'Components',
     children: [
       {
-        name: 'Button',
-        href: '/docs/button',
-        isNew: true,
-      },
-      {
         name: 'Accordion',
         href: '/docs/accordion',
-        isNew: true,
+       
       },
+      {
+        name: 'Button',
+        href: '/docs/button',
+        
+      }
+      
     ],
   },
 ];

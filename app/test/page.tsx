@@ -1,99 +1,155 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Mail,
+  Globe,
+} from "lucide-react";
 
-interface FAQItem {
-  question: string;
-  answer: string;
-}
+export default function FlipCard() {
+  const [isFlipped, setIsFlipped] = useState(false);
 
-const FAQAccordion: React.FC = () => {
-  const [openItems, setOpenItems] = useState<Set<number>>(new Set());
-
-  const toggleItem = (index: number) => {
-    const newOpenItems = new Set(openItems);
-    if (newOpenItems.has(index)) {
-      newOpenItems.delete(index);
-    } else {
-      newOpenItems.add(index);
-    }
-    setOpenItems(newOpenItems);
-  };
-
-  const faqItems: FAQItem[] = [
+  const socialLinks = [
     {
-      question: "What is Postel and how can it help me grow my brand?",
-      answer:
-        "Postel is a comprehensive social media management tool designed to help creators, entrepreneurs, and marketers grow their brand on X (Twitter). It provides advanced analytics, content scheduling, audience insights, and engagement optimization features to maximize your social media presence and drive meaningful business results.",
+      icon: <Linkedin  />,
+      url: "https://linkedin.com/in/johndoe",
+      label: "LinkedIn",
     },
     {
-      question: "How is Postel better than ChatGPT or other tools for this?",
-      answer:
-        "Unlike general AI tools like ChatGPT, Postel is specifically built for X (Twitter) success. It combines AI-powered content creation with platform-specific insights, real-time trending analysis, optimal posting schedules, and detailed performance metrics. Our tool understands Twitter's algorithm and user behavior patterns to help you create content that actually performs well on the platform.",
+      icon: <Twitter  />,
+      url: "https://twitter.com/johndoe",
+      label: "Twitter",
     },
     {
-      question: "What can I try during Postel's free trial?",
-      answer:
-        "During your free trial, you'll have access to our core features including content generation, basic analytics, scheduling up to 50 posts, audience analysis, and trending topic suggestions. You can test our AI content assistant, explore template libraries, and see how our optimization suggestions can improve your engagement rates before committing to a paid plan.",
+      icon: <Github />,
+      url: "https://github.com/johndoe",
+      label: "GitHub",
     },
     {
-      question: "Can I use Postel on my phone?",
-      answer:
-        "Yes! Postel is fully responsive and works seamlessly on mobile devices through your web browser. We also offer dedicated mobile apps for iOS and Android, allowing you to create, schedule, and manage your content on the go. The mobile experience includes all core features with an optimized interface for smaller screens.",
+      icon: <Instagram  />,
+      url: "https://instagram.com/johndoe",
+      label: "Instagram",
     },
     {
-      question: "Who is this for?",
-      answer:
-        "Postel is designed for creators, entrepreneurs, and marketers who want to create high-performing value content for X to grow their audience and business. Whether you're building an audience, promoting a product, or driving engagement for a business, Postel provides the tools to make value content creation simple, effective, and scalable on X (Twitter).",
+      icon: <Mail  />,
+      url: "mailto:john@example.com",
+      label: "Email",
     },
     {
-      question: "I have another question",
-      answer:
-        "We're here to help! Feel free to reach out to our support team through the contact form on our website, send us an email at support@postel.app, or join our community Discord where you can get help from both our team and other Postel users. We typically respond within 24 hours and are always happy to assist with any questions about features, billing, or getting the most out of Postel.",
+      icon: <Globe  />,
+      url: "https://johndoe.com",
+      label: "Website",
     },
   ];
 
   return (
-    <div className="max-w-4xl p-6">
-      <div className="space-y-3">
-        {faqItems.map((item: FAQItem, index: number) => (
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div
+        className="w-80 h-96 cursor-pointer group"
+        style={{ perspective: "1000px" }}
+        onMouseEnter={() => setIsFlipped(true)}
+        onMouseLeave={() => setIsFlipped(false)}
+      >
+        <div
+          className="relative w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(-180deg)]"
+          style={{
+            transformStyle: "preserve-3d",
+          }}
+        >
+          {/* Front Side */}
           <div
-            key={index}
-            className="bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-200"
+            className="absolute inset-0 w-full h-full rounded-2xl bg-white shadow-2xl border border-gray-200"
+            style={{ backfaceVisibility: "hidden" }}
           >
-            {/* Button */}
-            <button
-              onClick={() => toggleItem(index)}
-              className="w-full px-6 py-4 text-left flex justify-between items-center transition-colors duration-150"
-            >
-              <span className="text-gray-800 font-medium  pr-8">
-                {item.question}
-              </span>
-              <span
-                className={`transform transition-transform duration-300 ease-in-out ${
-                  openItems.has(index) ? "rotate-180" : "rotate-0"
-                }`}
-              >
-                <ChevronDown className="w-5 h-5 text-gray-500" />
-              </span>
-            </button>
+            <div className="flex flex-col items-center justify-center h-full p-8 space-y-6">
+              {/* Profile Image */}
+              <div className="relative">
+                <div className="w-32 h-32 rounded-full p-1 shadow-xl">
+                  <div className="w-full h-full rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+                      alt="John Doe"
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+                </div>
+               
+              </div>
 
-            {/* Smooth Transition for Content */}
-            <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                openItems.has(index) ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-              }`}
-            >
-              <div className="px-6 pb-4 ">
-                <p className="text-gray-600 leading-relaxed">{item.answer}</p>
+              {/* Name and Title */}
+              <div className="text-center space-y-3">
+                <h2 className="text-3xl font-bold text-black tracking-tight">
+                  John Doe
+                </h2>
+                <div className="space-y-1">
+                  <p className="text-lg font-semibold text-gray-800">
+                    Senior Frontend Developer
+                  </p>
+                  <p className="text-sm text-gray-500 font-medium">
+                    Tech Solutions Inc.
+                  </p>
+                </div>
+              </div>
+
+              {/* Decorative Element */}
+             
+            </div>
+          </div>
+
+          {/* Back Side */}
+          <div
+            className="absolute border border-gray-200 inset-0 w-full h-full rounded-2xl bg-white shadow-2xl"
+            style={{
+              backfaceVisibility: "hidden",
+              transform: "rotateY(180deg)",
+            }}
+          >
+            <div className="flex flex-col items-center justify-center h-full p-8">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-black mb-2">
+                  Connect With Me
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  Let's build something amazing together
+                </p>
+              </div>
+
+              {/* Social Media Grid */}
+              <div className="grid grid-cols-3 gap-6">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-16 h-16 bg-gray-100 rounded-xl border border-gray-200"
+                    title={social.label}
+                  >
+                   <span className=" text-black"> {social.icon} </span>
+                  </a>
+                ))}
+              </div>
+
+              {/* Additional Info */}
+              <div className="mt-8 text-center">
+                <p className="text-gray-600 text-xs font-medium">
+                  Available for freelance projects
+                </p>
+                <div className="flex items-center justify-center space-x-2 mt-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-green-600 text-xs">
+                    Currently online
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
-};
-
-export default FAQAccordion;
+}

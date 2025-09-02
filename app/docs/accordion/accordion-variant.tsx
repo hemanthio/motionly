@@ -60,7 +60,7 @@ const FAQAccordion: React.FC = () => {
         {faqItems.map((item: FAQItem, index: number) => (
           <div
             key={index}
-            className="bg-white rounded-xl border border-gray-200 overflow-hidden transition-all duration-200"
+            className="bg-white rounded-2xl border border-gray-200 overflow-hidden transition-all duration-200"
           >
             {/* Button */}
             <button
@@ -85,7 +85,7 @@ const FAQAccordion: React.FC = () => {
                 openItems.has(index) ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="px-6 pb-4 ">
+              <div className="px-6 pb-4 border-t border-gray-200 pt-3">
                 <p className="text-gray-600 leading-relaxed">{item.answer}</p>
               </div>
             </div>
