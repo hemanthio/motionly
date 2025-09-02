@@ -6,6 +6,7 @@ export const metadata = {
 
 import FAQAccordion from './Accordion';
 import ComponentCodePreview from '@/components/website/component-code-preview';
+import FAQAccordionVariant from './accordion-variant';
 
 # Accordion
 
@@ -18,6 +19,14 @@ An animated accordion component with smooth transitions and customizable FAQ ite
 <ComponentCodePreview
   component={<FAQAccordion />}
   filePath='app/docs/accordion/Accordion.tsx'
+  classNameComponentContainer='min-h-[400px] flex items-center justify-center'
+/>
+
+### Accordion Variant
+
+<ComponentCodePreview
+  component={<FAQAccordionVariant />}
+  filePath='app/docs/accordion/accordion-variant.tsx'
   classNameComponentContainer='min-h-[400px] flex items-center justify-center'
 />
 
@@ -58,10 +67,10 @@ An animated accordion component with smooth transitions and customizable FAQ ite
 
 ### FAQAccordion
 
-| Prop      | Type           | Default              | Description                                  |
-| :-------- | :------------- | :------------------- | :------------------------------------------- |
+| Prop      | Type          | Default              | Description                                  |
+| :-------- | :------------ | :------------------- | :------------------------------------------- |
 | faqItems  | Array FAQItem | Predefined FAQ items | Array of FAQ items with question and answer. |
-| className | string         | ''                   | Optional CSS class for additional styling.   |
+| className | string        | ''                   | Optional CSS class for additional styling.   |
 
 ### FAQ Item Interface
 
@@ -69,21 +78,3 @@ An animated accordion component with smooth transitions and customizable FAQ ite
 | :------- | :----- | :---------------------------- |
 | question | string | The question text to display. |
 | answer   | string | The answer text to display.   |
-
-## Customization
-
-The accordion component can be easily customized by:
-
-1. **Modifying FAQ Items**: Update the `faqItems` array with your own questions and answers
-2. **Styling**: Customize colors, spacing, and animations through Tailwind classes
-3. **Animation**: Adjust the fade-in animation duration and easing in the CSS
-4. **Icons**: Replace ChevronUp/ChevronDown with your preferred icons
-
-## Features
-
-- ✅ Smooth expand/collapse animations
-- ✅ Hover effects on accordion items
-- ✅ Customizable FAQ content
-- ✅ Responsive design
-- ✅ Accessible keyboard navigation
-- ✅ Fade-in animation for content panels
