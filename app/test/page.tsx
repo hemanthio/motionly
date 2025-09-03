@@ -1,70 +1,81 @@
 "use client"
 
-import React from "react";
+import React, { useState, useEffect, useRef } from 'react';
 
-interface BadgeAnnouncementProps {
-  badgeText?: string;
-  announcementText?: string;
-  href?: string;
-  showArrow?: boolean;
-  showBadge?: boolean; 
-  onClick?: () => void;
+interface NumberCounterProps {
+  target: number;
+  duration?: number; // duration in seconds
+  startOnMount?: boolean;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  className?: string;
+  onComplete?: () => void;
 }
 
-const BadgeAnnouncement: React.FC<BadgeAnnouncementProps> = ({
-  badgeText = "NEW",
-  announcementText = "Components are live on motionly",
-  href = "#",
-  showArrow = true,
-  showBadge = true, 
-  onClick,
+const NumberCounter: React.FC<NumberCounterProps> = ({
+  target = 200,
+  duration = 2,
+  startOnMount = true,
+  prefix = "$",
+  suffix = "%",
+  decimals = 0,
+  className = "",
+  onComplete
 }) => {
-  const handleClick = () => {
-    if (onClick) onClick();
+  const [count, setCount] = useState<number>(0);
+  const animationRef = useRef<number>();
+  const startTimeRef = useRef<number>();
+
+  const startAnimation = () => {
+    setCount(0);
+    startTimeRef.current = Date.now();
+    
+    const animate = () => {
+      const now = Date.now();
+      const elapsed = (now - (startTimeRef.current || 0)) / 1000; // seconds
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function (easeOutQuart)
+      const easeProgress = 1 - Math.pow(1 - progress, 4);
+      
+      const currentCount = target * easeProgress;
+      setCount(currentCount);
+      
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+        if (onComplete) onComplete();
+      }
+    };
+    
+    animationRef.current = requestAnimationFrame(animate);
   };
 
-  const content = (
-    <div className="inline-flex items-center gap-2 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 rounded-full px-4 py-2 cursor-pointer group">
-      {/* NEW Badge */}
-      {showBadge && (
-        <span className="bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded-full uppercase">
-          {badgeText}
-        </span>
-      )}
+  useEffect(() => {
+    if (startOnMount) {
+      startAnimation();
+    }
 
-      {/* Announcement Text */}
-      <span className="text-purple-600 text-sm font-medium">
-        {announcementText}
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [target, duration, startOnMount]);
+
+  const formatNumber = (num: number): string => {
+    return num.toFixed(decimals);
+  };
+
+  return (
+    <div className={`font-mono text-4xl font-regular ${className}`}>
+      <span className="tabular-nums">
+        {prefix}{formatNumber(count)}{suffix}
       </span>
-
-      {/* Arrow */}
-      {showArrow && (
-        <svg
-          className="w-4 h-4 text-purple-600 transition-transform duration-200 group-hover:translate-x-0.5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-      )}
     </div>
   );
+}; 
 
-  if (href && href !== "#") {
-    return (
-      <a href={href} onClick={handleClick} className="inline-block">
-        {content}
-      </a>
-    );
-  }
-
-  return <div onClick={handleClick}>{content}</div>;
-};
-
-export default BadgeAnnouncement;
+export default NumberCounter;
