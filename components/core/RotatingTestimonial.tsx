@@ -7,13 +7,13 @@ interface Testimonial {
   author: string;
   title: string;
   company: string;
-  image?: string; // ✅ new: profile image
+  image?: string; // 
 }
 
 interface TestimonialProps {
   testimonials?: Testimonial[];
   autoRotate?: boolean;
-  interval?: number; // in milliseconds
+  interval?: number; 
   showDots?: boolean;
   className?: string;
 }
@@ -90,7 +90,7 @@ const RotatingTestimonial: React.FC<TestimonialProps> = ({
       <div 
         className={`transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
       >
-        <blockquote className="text-xl md:text-2xl font-light text-gray-800 tracking-tight leading-normal mb-8">
+        <blockquote className="text-xl md:text-2xl font-light text-gray-800 leading-normal mb-8">
           "{currentTestimonial.quote}"
         </blockquote>
 
