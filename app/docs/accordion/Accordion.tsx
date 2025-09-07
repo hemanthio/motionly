@@ -52,7 +52,7 @@ const FAQAccordion = () => {
               onClick={() => toggleItem(index)}
               className={`w-full px-6 py-4 text-left flex justify-between items-center rounded-xl transition-all duration-300 ${
                 activeItem === index
-                  ? "bg-gray-50 border-2 border-purple-400"
+                  ? "bg-gray-50 border-2 border-blue-300"
                   : "bg-gray-50 border-2 border-gray-100 hover:border-gray-300"
               }`}
             >

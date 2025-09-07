@@ -30,14 +30,15 @@ export const NAVIGATION: NavigationGroup[] = [
       {
         name: 'Accordion',
         href: '/docs/accordion',
-       
       },
       {
         name: 'Button',
         href: '/docs/button',
-        
-      }
-      
+      },
+      {
+        name: 'Feature Section',
+        href: '/docs/featuresection',
+      },
     ],
   },
 ];
