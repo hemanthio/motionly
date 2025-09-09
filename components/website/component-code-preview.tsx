@@ -6,7 +6,8 @@ import { extractCodeFromFilePath } from '@/lib/code';
 
 type ComponentCodePreview = {
   component: React.ReactElement;
-  filePath: string;
+  filePath?: string;
+  code?: string;
   hasReTrigger?: boolean;
   classNameComponentContainer?: string;
 };
@@ -14,10 +15,13 @@ type ComponentCodePreview = {
 export default function ComponentCodePreview({
   component,
   filePath,
+  code,
   hasReTrigger,
   classNameComponentContainer,
 }: ComponentCodePreview) {
-  const fileContent = extractCodeFromFilePath(filePath);
+  // Use provided code or extract from filePath
+  const fileContent =
+    code || (filePath ? extractCodeFromFilePath(filePath) : '');
 
   return (
     <div className='not-prose relative z-0 flex items-center justify-between pb-4'>
@@ -34,7 +38,7 @@ export default function ComponentCodePreview({
             component={component}
             hasReTrigger={hasReTrigger}
             className={classNameComponentContainer}
-            filePath={filePath}
+            filePath={filePath || ''}
           />
         </TabsContent>
         <TabsContent
