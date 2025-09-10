@@ -36,8 +36,8 @@ export const NAVIGATION: NavigationGroup[] = [
         href: '/docs/button',
       },
       {
-        name: 'Feature Section',
-        href: '/docs/featuresection',
+        name: 'Container Section',
+        href: '/docs/containersection',
       },
     ],
   },

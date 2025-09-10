@@ -1,0 +1,131 @@
+export const metadata = {
+  title: 'Feature Section - Motionly',
+  description:
+    'A responsive, alternating image-and-copy feature section. Built for React, Next.js, and Tailwind CSS.',
+};
+
+import FeaturesSection from './featurecard';
+import ComponentCodePreview from '@/components/website/component-code-preview';
+import CodeBlock from '@/components/website/code-block';
+
+# ContainerSection 01
+
+A responsive feature block with alternating image and content columns, ideal for landing pages and product sections. Includes optional buttons and customizable copy.
+
+## Examples
+
+### Basic Container Section
+
+<ComponentCodePreview
+  component={
+    <FeaturesSection
+      features={[
+        {
+          id: 'analytics',
+          image:
+            'https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D',
+          heading: 'Experience Innovation Like Never Before',
+          subheading:
+            'Discover how our cutting-edge features empower you to achieve more with seamless performance, intuitive design, and personalized solutions tailored to your needs',
+          buttonText: 'Learn more',
+          buttonHref: '/dashboard',
+          showButton: true,
+        },
+        {
+          id: 'collaboration',
+          image:
+            'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D',
+          heading: 'Designed for Future, Built for You',
+          subheading:
+            'Work together efficiently with our powerful collaboration tools. Share files, communicate in real-time, and keep everyone on the same page with integrated project management features.',
+          buttonText: 'Start Collaborating',
+          buttonHref: '/collaboration',
+          showButton: true,
+        },
+        {
+          id: 'security',
+          image:
+            'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D',
+          heading: 'Unlock Your Productivity Potential',
+          subheading:
+            'Protect your data with bank-level security measures. Advanced encryption, multi-factor authentication, and compliance with industry standards ensure your information stays safe.',
+          buttonText: 'Learn More',
+          // Removed onButtonClick to avoid passing a function as a prop
+          showButton: true,
+        },
+        {
+          id: 'mobile',
+          image:
+            'https://images.unsplash.com/photo-1509281373149-e957c6296406?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D',
+          heading: 'Transform Your Ideas Into Reality',
+          subheading:
+            "Access your work from anywhere with our native mobile apps. Full feature parity across all devices means you never miss a beat, whether you're in the office or on the go.",
+          buttonText: 'Download App',
+          buttonHref: 'https://app.example.com/download',
+          showButton: false,
+        },
+      ]}
+    />
+  }
+  code={`<FeaturesSection  
+  features={[ 
+    {
+      id: 'analytics',
+      image:
+        'https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D',
+      heading: 'Experience Innovation Like Never Before',
+      subheading:
+        'Discover how our cutting-edge features empower you to achieve more with seamless performance, intuitive design, and personalized solutions tailored to your needs',
+      buttonText: 'Learn more',
+      buttonHref: '/dashboard',
+      showButton: true,
+    },
+    {
+      id: 'collaboration',
+      image:
+        'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D',
+      heading: 'Designed for Future, Built for You',
+      subheading:
+        'Work together efficiently with our powerful collaboration tools. Share files, communicate in real-time, and keep everyone on the same page with integrated project management features.',
+      buttonText: 'Start Collaborating',
+      buttonHref: '/collaboration',
+      showButton: true,
+    },
+    {
+      id: 'security',
+      image:
+        'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D',
+      heading: 'Unlock Your Productivity Potential',
+      subheading:
+        'Protect your data with bank-level security measures. Advanced encryption, multi-factor authentication, and compliance with industry standards ensure your information stays safe.',
+      buttonText: 'Learn More',
+      // Removed onButtonClick to avoid passing a function as a prop
+      showButton: true,
+    },
+    {
+      id: 'mobile',
+      image:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHJhbmRvbXxlbnwwfHwwfHx8MA%3D%3D',
+      heading: 'Transform Your Ideas Into Reality',
+      subheading:
+        "Access your work from anywhere with our native mobile apps. Full feature parity across all devices means you never miss a beat, whether you're in the office or on the go.",
+      buttonText: 'Download App',
+      buttonHref: 'https://app.example.com/download',
+      showButton: false,
+    }
+  ]}
+   />`}
+  classNameComponentContainer='min-h-[400px] flex items-center justify-center'
+/>
+
+## Code
+
+<CodeBlock filePath='app/docs/containersection/featurecard.tsx' />
+
+## Component API
+
+### FeaturesSection
+
+| Prop      | Type   | Default | Description                                |
+| :-------- | :----- | :------ | :----------------------------------------- |
+| className | string | ''      | Optional CSS class for additional styling. |
